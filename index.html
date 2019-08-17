@@ -47,23 +47,21 @@
                         <div class="panel-heading">
                             <h2 class="panel-title text-center">Number to match</h2></div>
                             <div class="panel-body"><h3 id="numberToMatch" class="text-center"></h3></div>
-                        </div>
+                        
                     </div>
                 </div>
-        </div>
-            
         
+            
             <!--Score-->
             <div class="col-md-2">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h2 class="panel-title text-center">Score</h2></div>
-                            <div class="panel-body"><h3 id="score" class="text-center"></h3></div>
-                        </div>
-                    </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="panel-title text-center">Score</h2></div>
+                        <div class="panel-body"><h3 id="score" class="text-center"></h3></div>
+                        
                 </div>
+            </div>
         </div>
-
         
         <div class="row">
             <!--Crystals-->
@@ -84,20 +82,18 @@
         <!--Counters-->
         <div class="row">
             <div class="col-lg-3">
-                <div class="panel panel-info">
+                <div class="panel panel-info ml-4">
                     <div class="panel-heading">
                         <h2 class="panel-title text-center">Wins</h2></div>
-                        <div class="panel-body"><h3 class="text-center">0</h3></div>
-                    </div>
+                        <div class="panel-body"><h3 id="winCount" class="text-center">0</h3></div>
                 </div>
             </div>
 
             <div class="col-lg-3">
-                <div class="panel panel-info">
+                <div class="panel panel-info ml-4">
                     <div class="panel-heading">
                         <h2 class="panel-title text-center">Losses</h2></div>
-                        <div class="panel-body"><h3 class="text-center">0</h3></div>
-                    </div>
+                        <div class="panel-body"><h3 id="lossCount" class="text-center">0</h3></div>
                 </div>
             </div>
         </div>
@@ -201,10 +197,22 @@ var startGame = function() {
         if(score > numberToMatch) { 
             alert("Boo, you lost!");
             console.log("Boo, you lost!");
+            //Add to the losses counter
+            lossCount++;
+            //We also need to update the HTML
+            $("#lossCount").text(lossCount);
+            //Restart the game
+            startGame();
         }
         else if (score == numberToMatch) {
             alert("Yay, you won!");
             console.log("Yay, you won!");
+            //Add to the wins counter
+            winCount++;
+            //We need to uprate the HTML here as well
+            $("#winCount").text(winCount);
+            //Restart the game
+            startGame();
         }
 }
 
