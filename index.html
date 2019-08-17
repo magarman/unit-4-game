@@ -5,15 +5,16 @@
         <title>Crystal Collector</title>
 
     <!--Bootstrap-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
 <body>
 
-    <!--Crystal collector-->
+    
     <div class="container">
+<!--"Crystal collector" top panel-->
         <div class="jumbotron" style="background-color: lavender; color:gray">
             <div class="container">
                 <h1 class="text-center"><strong>Crystal Collector</strong></h1>
@@ -39,47 +40,82 @@
             </div>
         </div>
     
-        <!--Random score-->
+        <!--Scores & crystals-->
         <div class="row">
-            <div class="col-lg-2">
+
+            <!--Number to match-->
+                <div class="col-lg-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h2 class="panel-title text-center">Number to match</h2></div>
+                            <div class="panel-body"><h3 class="text-center">20</h3></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            
+            
+        <div class="row">
+
+            <!--Score-->
+                <div class="col-lg-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h2 class="panel-title text-center">Score</h2></div>
+                            <div class="panel-body"><h3 class="text-center">13</h3></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        
+        <div class="row">
+            <!--Crystals-->
+            <div class="col-lg-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h2 class="panel-title text-center">Number to match</h2>
+                        <h2 class="panel-title text-center">Crystals</h2></div>
+                        <div class="panel-body text-center">
+                            <img src="assets/images/crystal1.jpg" alt="Crystal 1" height="150" width="150">
+                            <img src="assets/images/crystal2.jpg" alt="Crystal 2" height="150" width="150">
+                            <img src="assets/images/crystal3.jpg" alt="Crystal 3" height="150" width="150">
+                            <img src="assets/images/crystal4.jpg" alt="Crystal 4" height="150" width="150">
+                        </div>
+                </div>
+            </div>
+        </div>
+    
+        <!--Counters-->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="panel-title text-center">Wins</h2></div>
+                        <div class="panel-body"><h3 class="text-center">0</h3></div>
                     </div>
-                    <div class="panel-body"><h3 class="text-center">20</h3></div>
                 </div>
             </div>
 
-        <!--Player's score-->
-        <div class="row">
-            <div class="col-lg-2">
+            <div class="col-lg-6">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h2 class="panel-title text-center">Score</h2>
+                        <h2 class="panel-title text-center">Losses</h2></div>
+                        <div class="panel-body"><h3 class="text-center">0</h3></div>
                     </div>
-                <div class="panel-body"><h3 class="text-center">20</h3></div>
+                </div>
             </div>
         </div>
-            
-        <!--Crystals-->
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h2 class="panel-title text-center">Crystals</h2>
-                    </div>
-                <div class="panel-body"></div>
-            </div>
-        </div>
-            
-            
-            
-            
-            </div>
-
     
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     </div>
 </body>
 </html>
