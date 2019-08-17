@@ -151,7 +151,7 @@ var lossCount = 0;
 //Functions
 //
 var getRandom = function(min, max){
-    return Math.floor(Math.random() * (min - max + 1)) + min;
+    return Math.floor(Math.random(min) * (max + 1)) + min;
         }
 
 var startGame = function() {
@@ -187,9 +187,30 @@ var startGame = function() {
     score = score + crystal.value;
     console.log(score);
 //Change/update the HTML to reflect
-    $("#score").text = score;
+    $("#score").text(score);
+
+//Call the checkwin function after I run this
+        checkWin();
+
     console.log("Your score: " + score)
     }
+
+//This will check if teh player won or lost and will reset the game
+    var checkWin = function(){
+    //Check if score is larger than numberToMatch
+        if(score > numberToMatch) { 
+            alert("Boo, you lost!");
+            console.log("Boo, you lost!");
+        }
+        else if (score == numberToMatch) {
+            alert("Yay, you won!");
+            console.log("Yay, you won!");
+        }
+}
+
+
+
+//Main process
 // Starts the game
     startGame();
 
