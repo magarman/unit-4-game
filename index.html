@@ -46,7 +46,7 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h2 class="panel-title text-center">Number to match</h2></div>
-                            <div class="panel-body"><h3 class="text-center">20</h3></div>
+                            <div class="panel-body"><h3 id="numberToMatch" class="text-center"></h3></div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h2 class="panel-title text-center">Score</h2></div>
-                            <div class="panel-body"><h3 class="text-center">15</h3></div>
+                            <div class="panel-body"><h3 id="score" class="text-center"></h3></div>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,6 @@
 <!--JS-->
         <script src="assets/javascript/game.js"></script>
 <!--JQuery-->    
-    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 
@@ -142,8 +141,8 @@ $(document).ready(function(){
 };
 
 // Scores
-var currentScore = 0;
-var targetScore = 0;
+var score = 0;
+var numberToMatch = 0;
 
 //Wins and losses 
 var winCount = 0;
@@ -152,33 +151,66 @@ var lossCount = 0;
 //Functions
 //
 var getRandom = function(min, max){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (min - max + 1)) + min;
         }
 
-var startgame = function() {
+var startGame = function() {
     //Reset score
-    var currentScore = 0;
+    score = 0;
     //set target score (between 20 and 120)
-    targetScore = getRandom(20, 120);
+    console.log("to match: " + numberToMatch)
+    numberToMatch = getRandom(20, 120);
+    console.log(numberToMatch);
     //set different values for each of the crystals (between 1 and 2)
     crystal.crystal1.value = getRandom(1, 12);
     crystal.crystal2.value = getRandom(1, 12);
     crystal.crystal3.value = getRandom(1, 12);
     crystal.crystal4.value = getRandom(1, 12);
+    
     //Change the HTML to reflect all of these changes
-
+    $("#score").text(score.toString());
+    $("#numberToMatch").text(numberToMatch.toString());
 
     //testing Console
-    console.log("------------------------------------")
-    console.log("Target Score " + targetScore)
-    console.log("crystal1: " + crystal.crystal1.value + ", crystal2: " + crystal.crystal2.value + ",  crystal3: " + crystal.crystal3.value + ",  crystal4: " + crystal.crystal4.value)
-    console.log("------------------------------------")
-}
+    console.log("------------------------------------");
+    console.log("Number to match: " + numberToMatch);
+    console.log("crystal1: " + crystal.crystal1.value + ", crystal2: " + crystal.crystal2.value + ",  crystal3: " + crystal.crystal3.value + ",  crystal4: " + crystal.crystal4.value);
+    console.log("------------------------------------");
+    }
 
-        $("#crystal1").click(function(){
-        alert("The image was clicked.");
-        });
+//Function to respond to clicks on crystals
+    var addValues = function(crystal) {
+//Change current score
+    console.log(crystal)
+    console.log("pre-assign score: " + score)
+    
+    score = score + crystal.value;
+    console.log(score);
+//Change/update the HTML to reflect
+    $("#score").text = score;
+    console.log("Your score: " + score)
+    }
+// Starts the game
+    startGame();
+
+    $("#crystal1").click(function(){
+    addValues(crystal.crystal1);
     });
+
+    $("#crystal2").click(function(){
+    addValues(crystal.crystal2);
+    });
+
+    $("#crystal3").click(function(){
+    addValues(crystal.crystal3);
+    });
+
+    $("#crystal4").click(function(){
+    addValues(crystal.crystal4);
+    });
+
+
+});
 
 
 
