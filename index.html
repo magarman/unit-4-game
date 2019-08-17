@@ -5,10 +5,8 @@
         <title>Crystal Collector</title>
 
     <!--Bootstrap-->
-    <meta name="viewport" content="width=device-width, initial-scale=">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
 <body>
 
@@ -44,7 +42,7 @@
         <div class="row">
 
             <!--Number to match-->
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h2 class="panel-title text-center">Number to match</h2></div>
@@ -54,15 +52,13 @@
                 </div>
         </div>
             
-            
-        <div class="row">
-
+        
             <!--Score-->
-                <div class="col-lg-2">
+            <div class="col-md-2">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h2 class="panel-title text-center">Score</h2></div>
-                            <div class="panel-body"><h3 class="text-center">13</h3></div>
+                            <div class="panel-body"><h3 class="text-center">15</h3></div>
                         </div>
                     </div>
                 </div>
@@ -71,15 +67,15 @@
         
         <div class="row">
             <!--Crystals-->
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h2 class="panel-title text-center">Crystals</h2></div>
                         <div class="panel-body text-center">
-                            <img src="assets/images/crystal1.jpg" alt="Crystal 1" height="150" width="150">
-                            <img src="assets/images/crystal2.jpg" alt="Crystal 2" height="150" width="150">
-                            <img src="assets/images/crystal3.jpg" alt="Crystal 3" height="150" width="150">
-                            <img src="assets/images/crystal4.jpg" alt="Crystal 4" height="150" width="150">
+                            <img id="crystal1" src="assets/images/crystal1.jpg" alt="Crystal 1" height="150" width="150">
+                            <img id="crystal2" src="assets/images/crystal2.jpg" alt="Crystal 2" height="150" width="150">
+                            <img id="crystal3" src="assets/images/crystal3.jpg" alt="Crystal 3" height="150" width="150">
+                            <img id="crystal4" src="assets/images/crystal4.jpg" alt="Crystal 4" height="150" width="150">
                         </div>
                 </div>
             </div>
@@ -87,7 +83,7 @@
     
         <!--Counters-->
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h2 class="panel-title text-center">Wins</h2></div>
@@ -96,7 +92,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h2 class="panel-title text-center">Losses</h2></div>
@@ -105,17 +101,90 @@
                 </div>
             </div>
         </div>
+
+
+
+
+</div>
+
+<!--JS-->
+        <script src="assets/javascript/game.js"></script>
+<!--JQuery-->    
     
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+// Global variable
+//
+//Crystal object
+    var crystal = {
+    crystal1:
+    {
+    name: "crystal1",
+    value: 0
+    },
+    crystal2:
+    {
+    name: "crystal2",
+    value: 0
+    },
+    crystal3:
+    {
+    name: "crystal3",
+    value: 0
+    },
+    crystal4:
+    {
+    name: "crystal4",
+    value: 0
+    }
+};
+
+// Scores
+var currentScore = 0;
+var targetScore = 0;
+
+//Wins and losses 
+var winCount = 0;
+var lossCount = 0;
+
+//Functions
+//
+var getRandom = function(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+var startgame = function() {
+    //Reset score
+    var currentScore = 0;
+    //set target score (between 20 and 120)
+    targetScore = getRandom(20, 120);
+    //set different values for each of the crystals (between 1 and 2)
+    crystal.crystal1.value = getRandom(1, 12);
+    crystal.crystal2.value = getRandom(1, 12);
+    crystal.crystal3.value = getRandom(1, 12);
+    crystal.crystal4.value = getRandom(1, 12);
+    //Change the HTML to reflect all of these changes
+
+
+    //testing Console
+    console.log("------------------------------------")
+    console.log("Target Score " + targetScore)
+    console.log("crystal1: " + crystal.crystal1.value + ", crystal2: " + crystal.crystal2.value + ",  crystal3: " + crystal.crystal3.value + ",  crystal4: " + crystal.crystal4.value)
+    console.log("------------------------------------")
+}
+
+        $("#crystal1").click(function(){
+        alert("The image was clicked.");
+        });
+    });
+
+
+
+
+
+</script>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    </div>
 </body>
 </html>
