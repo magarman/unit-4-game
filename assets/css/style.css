@@ -1,3 +1,5 @@
-#winCount {
-    margin-left: 5px;
-}
+/*does not work*/
+#test {
+    float: right;
+    margin-right: 0;
+} 

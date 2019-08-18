@@ -11,7 +11,7 @@
 <body>
 
     
-    <div class="container">
+    <div class="container-fluid">
 <!--"Crystal collector" top panel-->
         <div class="jumbotron" style="background-color: lavender; color:gray">
             <div class="container">
@@ -63,17 +63,22 @@
             </div>
         </div>
         
+
         <div class="row">
             <!--Crystals-->
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="panel panel-info">
-                    <div class="panel-heading">
+                    <div id="test" class="panel-heading">
                         <h2 class="panel-title text-center">Crystals</h2></div>
                         <div class="panel-body text-center">
                             <img id="crystal1" src="assets/images/crystal1.jpg" alt="Crystal 1" height="150" width="150">
+                            <br><br>
                             <img id="crystal2" src="assets/images/crystal2.jpg" alt="Crystal 2" height="150" width="150">
+                            <br><br>
                             <img id="crystal3" src="assets/images/crystal3.jpg" alt="Crystal 3" height="150" width="150">
+                            <br><br>
                             <img id="crystal4" src="assets/images/crystal4.jpg" alt="Crystal 4" height="150" width="150">
+                            <br><br>
                         </div>
                 </div>
             </div>
@@ -99,8 +104,6 @@
         </div>
 
 
-
-
 </div>
 
 <!--JS-->
@@ -110,140 +113,133 @@
 <script>
 
 $(document).ready(function(){
-// Global variable
-//
-//Crystal object
-    var crystal = {
-    crystal1:
-    {
-    name: "crystal1",
-    value: 0
-    },
-    crystal2:
-    {
-    name: "crystal2",
-    value: 0
-    },
-    crystal3:
-    {
-    name: "crystal3",
-    value: 0
-    },
-    crystal4:
-    {
-    name: "crystal4",
-    value: 0
-    }
-};
-
-// Scores
-var score = 0;
-var numberToMatch = 0;
-
-//Wins and losses 
-var winCount = 0;
-var lossCount = 0;
-
-//Functions
-//
-var getRandom = function(min, max){
-    return Math.floor(Math.random(min) * (max + 1)) + min;
+    // GLOBAL VARIABLES ***************************************************************
+    
+    //Crystal object 
+        var crystal = {
+        crystal1:
+        {
+        name: "crystal1",
+        value: 0
+        },
+        crystal2:
+        {
+        name: "crystal2",
+        value: 0
+        },
+        crystal3:
+        {
+        name: "crystal3",
+        value: 0
+        },
+        crystal4:
+        {
+        name: "crystal4",
+        value: 0
         }
-
-var startGame = function() {
-    //Reset score
-    score = 0;
-    //set target score (between 20 and 120)
-    console.log("to match: " + numberToMatch)
-    numberToMatch = getRandom(20, 120);
-    console.log(numberToMatch);
-    //set different values for each of the crystals (between 1 and 2)
-    crystal.crystal1.value = getRandom(1, 12);
-    crystal.crystal2.value = getRandom(1, 12);
-    crystal.crystal3.value = getRandom(1, 12);
-    crystal.crystal4.value = getRandom(1, 12);
+    };
     
-    //Change the HTML to reflect all of these changes
-    $("#score").text(score.toString());
-    $("#numberToMatch").text(numberToMatch.toString());
-
-    //testing Console
-    console.log("------------------------------------");
-    console.log("Number to match: " + numberToMatch);
-    console.log("crystal1: " + crystal.crystal1.value + ", crystal2: " + crystal.crystal2.value + ",  crystal3: " + crystal.crystal3.value + ",  crystal4: " + crystal.crystal4.value);
-    console.log("------------------------------------");
-    }
-
-//Function to respond to clicks on crystals
-    var addValues = function(crystal) {
-//Change current score
-    console.log(crystal)
-    console.log("pre-assign score: " + score)
+    //Scores
+    var score = 0;
+    var numberToMatch = 0;
     
-    score = score + crystal.value;
-    console.log(score);
-//Change/update the HTML to reflect
-    $("#score").text(score);
-
-//Call the checkwin function after I run this
+    //Wins and losses 
+    var winCount = 0;
+    var lossCount = 0;
+    
+    //FUNCTIONS *******************************************************************
+    
+        //Pick a random number (min to max), I can use this on the crystals as well as the Number to Match
+        var getRandom = function(min, max){
+        return Math.floor(Math.random(min) * (max + 1)) + min;
+            }
+    
+        //Function to start the game, and also to reset it once the player wins/looses
+        var startGame = function() {
+        //Reset score
+        score = 0;
+        //Randomly set number to match (between 20 and 120)
+        console.log("to match: " + numberToMatch)
+        numberToMatch = getRandom(20, 120);
+        console.log(numberToMatch);
+        //Set different random values for each crystal (between 1 and 12)
+        crystal.crystal1.value = getRandom(1, 12);
+        crystal.crystal2.value = getRandom(1, 12);
+        crystal.crystal3.value = getRandom(1, 12);
+        crystal.crystal4.value = getRandom(1, 12);
+        //Update the HTML to reflect these changes
+        //Note to self: If you don't convert it to string, it will give you a type error
+        $("#score").text(score.toString());
+        $("#numberToMatch").text(numberToMatch.toString());
+        //Output to console to see the magic happen! -and cheat :)
+        console.log("------------------------------------");
+        console.log("Number to match: " + numberToMatch);
+        console.log("crystal1: " + crystal.crystal1.value + ", crystal2: " + crystal.crystal2.value + ",  crystal3: " + crystal.crystal3.value + ",  crystal4: " + crystal.crystal4.value);
+        console.log("------------------------------------");
+        }
+    
+        //Function to make the clicks on the crystals work
+        var addValues = function(crystal) {
+        //Change current score
+        console.log(crystal)
+        console.log("pre-assign score: " + score)
+        //Match the score with the value that each crystal click adds
+        score = score + crystal.value;
+        console.log(score);
+        //Update the HTML to show these changes
+        $("#score").text(score);
+        //Call the checkwin function after I run this
         checkWin();
-
-    console.log("Your score: " + score)
+        //Log the score to see if it works
+        console.log("Your score: " + score)
+        }
+    
+    //This will check if teh player won or lost and will reset the game
+        var checkWin = function(){
+        //Check if score is larger than numberToMatch
+            if(score > numberToMatch) { 
+                alert("Boo, you lost!");
+                console.log("Boo, you lost!");
+                //Add to the losses counter
+                lossCount++;
+                //We also need to update the HTML
+                $("#lossCount").text(lossCount);
+                //Restart the game
+                startGame();
+            }
+            else if (score == numberToMatch) {
+                alert("Yay, you won!");
+                console.log("Yay, you won!");
+                //Add to the wins counter
+                winCount++;
+                //We need to uprate the HTML here as well
+                $("#winCount").text(winCount);
+                //Restart the game
+                startGame();
+            }
     }
-
-//This will check if teh player won or lost and will reset the game
-    var checkWin = function(){
-    //Check if score is larger than numberToMatch
-        if(score > numberToMatch) { 
-            alert("Boo, you lost!");
-            console.log("Boo, you lost!");
-            //Add to the losses counter
-            lossCount++;
-            //We also need to update the HTML
-            $("#lossCount").text(lossCount);
-            //Restart the game
-            startGame();
-        }
-        else if (score == numberToMatch) {
-            alert("Yay, you won!");
-            console.log("Yay, you won!");
-            //Add to the wins counter
-            winCount++;
-            //We need to uprate the HTML here as well
-            $("#winCount").text(winCount);
-            //Restart the game
-            startGame();
-        }
-}
-
-
-
-//Main process
-// Starts the game
-    startGame();
-
-    $("#crystal1").click(function(){
-    addValues(crystal.crystal1);
+    
+    // Starts the game
+        startGame();
+    
+        $("#crystal1").click(function(){
+        addValues(crystal.crystal1);
+        });
+    
+        $("#crystal2").click(function(){
+        addValues(crystal.crystal2);
+        });
+    
+        $("#crystal3").click(function(){
+        addValues(crystal.crystal3);
+        });
+    
+        $("#crystal4").click(function(){
+        addValues(crystal.crystal4);
+        });
+    
+    
     });
-
-    $("#crystal2").click(function(){
-    addValues(crystal.crystal2);
-    });
-
-    $("#crystal3").click(function(){
-    addValues(crystal.crystal3);
-    });
-
-    $("#crystal4").click(function(){
-    addValues(crystal.crystal4);
-    });
-
-
-});
-
-
-
-
 
 </script>
     
